@@ -59,9 +59,10 @@ Dentro del fichero `index.html` agregamos la estructura básica de HTML5:
 ```
 
 En el código anterior vemos comentarios con la opcion de dejar lineas que permiten agregar codigo CSS y JavaScript, esto es completamente opcional, se recomienda hacer eso lo últmo.
-Para poner un ejemplo de como sería la estructura basica de CSS y JavaScript:
+Para poner un ejemplo de como sería la estructura con la implementación de estilos y scripts tnemos que tener en cuenta que estos ficheros se deberian agregar en subdirectorios dentro de la ruta de la pagina principal.
+Esto permitira un acceso rapido, asi como una buena organizacion, en el siguiente ejemplo se presenta la estructura ideal para este proceso.
 
-### Estructura de directorio
+## Estructura de directorio
 ```
 var
 └── www
@@ -71,4 +72,52 @@ var
         │   └── style.css
         └── scripts
             └── script.js
+```
+
+Para crear esta misma estructura hay que estar dentro de la ruta de la pagina principal `mipagina.es` y crear dos directorios, el primero seria `styles`, donde almacenaremos los ficheros de estilos `.css` y el segundo `scripts`, donde almacenaremos ficheros `.js`.
+
+Para llevar a cabo este proceso opcional, hay que hace lo siguiente:
+```bash
+#Nos posicionamos dentro de la ruta de la pagina
+cd /var/www/mipagina.es
+# - Ubicación actual: /var/www/mipagina.es
+
+#Creamos dos directorios
+mkdir styles
+mkdir scripts
+# - Ubicación actual: /var/www/mipagina.es
+```
+## Estilo y Funcionamiento de la pagina con CSS y JS
+
+Tras la creacion de los directorios, deberemos llenarlos con el codigo necesario, este estara almacenado dentro de ficheros, los cuales son llamados por la pagina principal `index.html`.
+Para crear estos ficheros es necesario acceder a cada directorio y crear un fichero con su correspondiente contenido:
+```bash
+#Nos posicionamos dentro de la ruta JavaScript (scripts)
+cd /var/www/mipagina.es/scripts
+# - Ubicación actual: /var/www/mipagina.es/scripts
+
+#Creamos el primer fichero de scripts con touch, esto nos abrira una ventana para introducir texto
+sudo touch script.js
+# - Ubicación actual: /var/www/mipagina.es/scripts/script.js
+```
+
+Tras crear el fichero dentro de la ruta especificada, nos abrira una ventana donde ingresar texto plano, en esta ventana ingresaremos codigo JavaScript, el cual estara vinculado a la pagina principal (debido al nombre y ruta usados, estos mismos estan referenciados en la pagina web, por lo que si se quiere, se puede cambiar la ruta de la pagina, no obstante, para su correcto funcionamiento es recomendable usar una ruta clara y fija.
+
+El codigo del fichero JavaScript puede ser el que se desee, en este caso se usara un codigo simple como muestra de correcto funcionamiento:
+```js
+//Alerta que muestra el correcto funcionamiento del codigo
+alert("El Codigo JavaScript Funciona correctamente");
+//Log en consola indicando el correcto funcionamiento del mismo
+console.log("Correcto funcionamiento");
+```
+
+Para poder aplicar estilos en la pagina, es necesario usar el mismo sistema usado durante la creacion de scripts de `JavaScript`, para ello iremos a la ruta de los estilos creada anteriormente y crearemos un fichero donde almacenaremos el codigo de los estilos de la apgina principal, este fichero debera contener el nombre referenciado en la pagina web, el cual es `style.css`, para que pueda funcionar, asi como el codigo `.js` debera estar en la misma ruta que la mencionada en la pagina web (/var/www/mipagina.es/styles).
+```bash
+#Nos posicionamos en la ruta de lso estilos (styles)
+cd /var/www/mipagina.es/styles
+# - Ubicación actual: /var/www/mipagina.es/styles
+
+#Creamos un fichero el cual almacenara los estilos de la pagina, esto nos abrira una ventana para introducir texto, de la misma manera que sucedio con la creacion del fichero de scripts de JavaScript
+sudo touch style.css
+# - Ubicación actual: /var/www/mipagina.es/scripts/style.css
 ```
