@@ -121,3 +121,37 @@ cd /var/www/mipagina.es/styles
 sudo touch style.css
 # - Ubicación actual: /var/www/mipagina.es/scripts/style.css
 ```
+
+Posteriormente agregamos contenido dentro del fichero, este ha de ser código `CSS`, esto permitira a la pagina obtener un estilo, bien sea un color de fondo, efectos, fuentes de texto...
+
+Un ejémplo sencillo de codigo `CSS` es el siguiente:
+```css
+/*Color de fondo en el cuerpo de la pagina*/
+body {
+  background-color: #fefbd8;
+}
+
+/*Color de fondo en los titulos h1*/
+h1 {
+  background-color: #80ced6;
+}
+
+/*Color de fonod en los divs*/
+div {
+  background-color: #d5f4e6;
+}
+
+/*Color de fondo en los span*/
+span {
+  background-color: #f18973;
+}
+
+/*Estilos cuerpo de texto*/
+p {
+font-family: 'Open Sans';
+font-size: 14px;
+color: #ccc;
+line-height: 18px;
+margin-bottom: 20px;
+}
+```
