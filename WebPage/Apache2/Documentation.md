@@ -201,7 +201,8 @@ ServerName mipagina.es
 Redirect / http://www.mipagina.es
 </VirtualHost>
 
-<VirtualHost *:443>	(Contenido para certificado SSL)
+# Contenido para certificado SSL
+<VirtualHost *:443>
 ServerName www.mipagina.es
 DocumentRoot /var/www/mipagina.es
 ErrorLog ${APACHE_LOG_DIR}/error.log
@@ -322,7 +323,7 @@ ServerName mipagina.es
 Redirect / http://www.mipagina.es
 </VirtualHost>
 
-<VirtualHost *:443>	(Contenido para certificado SSL)
+<VirtualHost *:443>
 ServerName www.mipagina.es
 DocumentRoot /var/www/mipagina.es
 ErrorLog ${APACHE_LOG_DIR}/error.log
