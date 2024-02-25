@@ -1,5 +1,5 @@
 # Documentación Apache2
-
+<!--Documentado por Andrés Abadías (Nisamov)-->
 ## Instalación
 Instalación de apache2:
 Instalamos el servicio con los privilegios de administrador.
@@ -141,11 +141,6 @@ div {
   background-color: #d5f4e6;
 }
 
-/*Color de fondo en los span*/
-span {
-  background-color: #f18973;
-}
-
 /*Estilos cuerpo de texto*/
 p {
 font-family: 'Open Sans';
@@ -156,3 +151,191 @@ margin-bottom: 20px;
 }
 ```
 Con esto hecho, tenemos la apgina web montada enlazada con los scripts y diseño, a continuación deberemos crear un certificado, para ello instalaremos `openssl`:
+```bash
+sudo apt install openssl
+```
+A continuación habilitaremos el modo `ssl`:
+```bash
+sudo a2enmod ssl
+```
+Finalmente reiniciaremos el servicio apache2:
+```bash
+sudo systemctl restart apache2
+```
+
+Con este comando habremos instalado `openssl` y habilitado el modo `ssl`, permitiendonos continuar con la configuración y creación de certificados.
+
+[ ! ] En caso de usar VirtualBox, pondremos la máquina en adaptador puente.
+
+Tras este previo paso hecho, accederemos a la localización de directorios y ficheros de configuración, para ello accederemos a la siguiente ubicación  y copiaremos el fichero `000-default.conf`.
+```bash
+#Accedemos a la ruta donde se almacena la configuración de las páginas dentro de apache
+cd /etc/apache2/sites-available
+# - Ubicación actual: /etc/apache2/sites-available
+
+#Clonamos el fichero 000-default.conf y lo renombramos con el nombre de nuestra pagina, seguido de un ".conf"
+sudo cp 000-default.conf mipagina.es.conf
+# - Ubicación actual: /etc/apache2/sites-available
+```
+Tras hacer una clonación, accedemos al interior de la copia creada por nosotros con el nombre de nuestra pagina, a la cual le aplicaremos atributos para hacer que la pagina funcione.
+
+Para esto accedemos con permisos de root y agregamos el siguiente contenido sustituyendo todo lo que pueda haber en su interior:
+```bash
+#Editamos el contenido como root
+sudo nano mipagina.es.conf
+# - Ubicación actual: /etc/apache2/sites-available/mipagina.es.conf
+```
+
+Dentro del  fichero agregamos el siguiente contenido:
+```bash
+<VirtualHost *:80>
+ServerAdmin webmaster@localhost
+DocumentRoot /var/www/mipagina.es
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog /etc/apache2/sites-available/access.log
+ServerName www.mipagina.es
+</VirtualHost>
+
+<VirtualHost *:443>
+ServerName mipagina.es
+Redirect / http://www.mipagina.es
+</VirtualHost>
+
+<VirtualHost *:443>	(Contenido para certificado SSL)
+ServerName www.mipagina.es
+DocumentRoot /var/www/mipagina.es
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog /etc/apache2/sites-available/access.log
+SSLEngine on
+SSLCertificateFile /etc/apache2/certificate/apache-certificate/apache-certificate.crt
+SSLCertificateKeyFile /etc/apache2/certificate/apache.key
+</VirtualHost>
+```
+Esto permitira enlazar la configuracion y redireccion mediante http a nuestra pagina creada previamente, en caso de haber utilizado un nombre diferente,  habria que sutituir cada valor que hace referencia a `mipagina.es` con el nombre que sea requerido.
+
+Para aplicar los cambios hay que usar el siguiente comando agregandole el nombre de nuestra página:
+```bash
+#Activamos nuestra carpeta, agregando a2ensite + nombreDeCarpeta
+sudo a2ensite mipagina.es
+# - Ubicación actual: /etc/apache2/sites-available
+```
+
+Tras seguir todos los pasos previos, hayq eu asignar una direccion a la pagina, para ello editaremos el fichero `/etc/hosts`:
+
+```bash
+#Editamos el fichero /etc/hosts
+sudo nano /etc/hosts
+# - Ubicación actual: /etc/hosts
+```
+En el interior de este asignaremos una ip al fichero index de la pagina.
+La direccion 127.0.1.1 está asociada a la propia maquina, mientras que la ip `40.0.0.2` es una direccion asociada a `mipagina.es`, es una direccion pública.
+```bash
+127.0.0.1       localhost
+127.0.1.1       theritex
+40.0.0.2        mipagina.es        www.mipagina.es
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+```
+
+Prosiguiendo con la configuración, procedemos a la configuración de los puertos dentro de `/etc/apache2/ports.conf`, para ello accedemos como root:
+```bash
+#Editamos el fichero de configuracion de puertos de apache2
+sudo nano /etc/apache2/ports.conf
+# - Ubicación actual: /etc/hosts
+```
+En el interior agregamos el siguiente contenido, el cual permite la escucha por los puertos 80 y 443:
+```bash
+#Hacemos que escuche el puerto 80
+Listen 80
+#Configuracion adicional para el certifiado ssl con escucha por el puerto 443
+<IfModule ssl_module>
+        Listen 443
+</IfModule>
+
+<IfModule mod_gnutls.c>
+        Listen 443
+</IfModule>
+```
+
+Habiendo guardado la configuración anterior, procedemos a reiniciar el servicio apache2:
+```bash
+sudo systemctl restart apache2
+```
+
+Tras estos pasos previos, accedemos a la configuración de apache2 agregando el siguiente contenido en las últimas lineas de la configuración, permitiendo sobreescribir las directivas anteriores, siendo este un paso necesario para el HTTPs y su funcionamiento:
+```bash
+sudo nano /etc/apache2/apache2.conf
+```
+
+```bash
+<Directory /var/www/mipagina.es>
+AllowOverride All
+</Directory>
+```
+
+Siguiendo con el procedimiento, creamos varios directorios para almacenar los certificados y llaves para la pagina, situandonos previamente en `/etc/apache2/sites-available`:
+```bash
+#Accedemos a la ruta donde almacenaremos los certificados
+cd /etc/apache2/sites-available
+```
+
+```bash
+#Creamos el primer directorio de alamcenamiento, con el nombre "certificado"
+mkdir certificado
+#Accedemos al interior del directorio creado previamente
+cd certificado
+#Creamos el certificado
+#En el siguiente comando creamos un certificado con el nombre "apache-certificado.crt"
+#Asi mismo creamos una llave llamada "apache.key", los cuales usaremos en la confgiuracion previa, dentro de /etc/apache2/sites-available/mipagina.es.conf
+sudo openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out apache-certificado.crt -keyout apache.key
+```
+Tras la creacion del certificado y la llave solicitará el ingreso de datos, siendo el unico requerido `Common name`, donde deberemos escribir la direccion ip `fija`.
+Estas llaves y certificados son necesarios dentro de la configuración previa "/etc/apache2/sites-available/mipagina.es.conf", haciendo referencia a estos mismos, los cuales usará para la conexión HTTPs.
+
+Como últimos pasos hay que reiniciar el servicio apache2:
+```bash
+sudo service apache2 restart
+```
+
+Tras esto, si se intenta acceder a la pagina, nos mostrará un aviso "Advertencia: Riesgo potencial de seguridad a continuación", para evitar un aviso similar, accederemos al a configuración de neustra página:
+```bash
+sudo nano /etc/apache2/sites-available/mipagina.es.conf
+```
+En esta ubicación agregaremos la siguiente linea:
+`Redirect permanent / http://www.mipagina.es`, redirigiendo todas los accesos http,  a una conexión segura mediante https:
+```bash
+<VirtualHost *:80>
+ServerAdmin webmaster@localhost
+DocumentRoot /var/www/mipagina.es
+Redirect permanent / http://www.mipagina.es
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog /etc/apache2/sites-available/access.log
+ServerName www.mipagina.es
+</VirtualHost>
+
+<VirtualHost *:443>
+ServerName mipagina.es
+Redirect / http://www.mipagina.es
+</VirtualHost>
+
+<VirtualHost *:443>	(Contenido para certificado SSL)
+ServerName www.mipagina.es
+DocumentRoot /var/www/mipagina.es
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog /etc/apache2/sites-available/access.log
+SSLEngine on
+SSLCertificateFile /etc/apache2/certificate/apache-certificate/apache-certificate.crt
+SSLCertificateKeyFile /etc/apache2/certificate/apache.key
+</VirtualHost>
+```
+
+Finalmente hay que reiniciar el servicio apache2 una última vez:
+```bash
+sudo service apache2 restart
+```
+
+Si se ha seguido el procedimiento indicado, la página debería ser funcional, durante la aplicación de cambios y los reinicios de apache2 peuden surgir errores, los cuales son detallados durante la misma ejecución.
