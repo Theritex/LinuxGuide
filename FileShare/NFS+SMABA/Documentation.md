@@ -1,5 +1,8 @@
-# Documentación SAMBA
-## Instalación
+# FileShare - NFS+SAMBA
+<!--Documentado por Andrés Abadías (Nisamov)-->
+
+## Documentación SAMBA
+### Instalación
 Instalamos el servicio samba como root:
 ```bash
 sudo apt install samba
@@ -18,7 +21,7 @@ Otorgamos permisos necesarios a los directorios creados:
 chmod 777 carpeta*
 # - Ubicación actual: /home/Documents
 ```
-## Edición fichero de configuración SAMBA
+### Edición fichero de configuración SAMBA
 Editamos el fichero de configuración de samba con root:
 ```bash
 sudo nano /etc/samba/smb.conf
@@ -64,7 +67,7 @@ Ese ejemplo permite mostrar de una manera sencilla la siguiente estructura a la 
 #   Elimina todo el contenido que clasificado como vetar en los veto files
 	delete veto files = yes
 ```
-## Reinicio de servicios
+### Reinicio de servicios
 Reiniciamos y analizamos los servicios:
 ```bash
 #Reiniciamos el servicio nmbd
@@ -79,8 +82,8 @@ Si es requerido agregar un usuario al cual otorgarle los permisos de acceso, usa
 sudo adduser usuario
 ```
 
-# Documentación NFS
-## Instalación
+## Documentación NFS
+### Instalación
 Instalamos los paquetes necesarios para su correcto funcionamiento:
 ```bash
 #Paquete necesario para el cliente
@@ -88,7 +91,7 @@ sudo apt install nfs-common
 #Paquete necesario para los servidores
 sudo apt install nfs-kernel-server
 ```
-## Edición fichero configuración NFS
+### Edición fichero configuración NFS
 Abrimos y editamos el fichero de configuración al cual otorgarle permisos:
 ```bash
 #Abrimos y editamos el fichero /etc/exports
@@ -119,12 +122,12 @@ no_subtree_check	No comprobar de donde procede
 wdelay		        Retarde la escritura en disco para permitir solicitudes consignadas
 no_wdelay		    Desactiva la opción predeterminada wdelay
 ```
-## Instalación de dependencias
+### Instalación de dependencias
 Dentro de la maquina cliente es necesario instalar `rpcbind`, debido a que es una dependencia de nfs-kernel-server:
 ```bash
 sudo apt install rpcbind
 ```
-## Montaje de directorios
+### Montaje de directorios
 Tras rpcbin en la maquina cliente, montamos el directorio dentro de la ruta que se quiera, mientras usamos la maquina cliente:
 ```bash
 sudo mount IP:/nombreCarpeta /rutaLocalEnLaQueMontarla
