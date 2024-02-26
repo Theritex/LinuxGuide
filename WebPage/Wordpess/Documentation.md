@@ -94,3 +94,21 @@ Modificamos la información del `usuario root`:
 ```bash
 update mysql.user set plugin=’mysql_native_password’ WHERE user=’root’;
 ```
+Leemos la lista de privilegios:
+```bash
+flush privileges;
+```
+Tras todos los pasos anteriores, procedemos a la creación de una base de datos para nuestra página:
+```bash
+create database wordpress;
+```
+Tras la creación de la misma, salimos del programa:
+```bash
+exit;
+```
+Finalmente procedemos a la instalación segura, la cual permite
+ajustar una serie de parámetros básicos de seguridad con el siguiente comando:
+```bash
+sudo mysql_secure_installation
+```
+Durante la instalación, realizará varias preguntas, ae stas contestamos que sí, en la última pregunta, `solicitará una contraseña`, esta misma será para `mysql`, guarda esa contraseña en un papel o un documento de forma que no la pierdas.
