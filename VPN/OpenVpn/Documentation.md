@@ -1,33 +1,51 @@
-VPN:
-Una VPN es una conexión remota (crea una camino virtual a través de internet para conectarse sin una conexión).
-Requisitos:
-apt-get update
-apt install vsftpd
-apt install openssh-server
-apt install ftp
-apt install openssl
-apt install git
-apt install openvpn
+# Documentación OpenVPN
+<!--Documentado por Andrés Abadías (Nisamov)-->
+Una VPN crea una camino virtual a través de internet para conectarse sin una conexión directa a una red.
 
-Clonamos Repositorios:
+Para poder comenzar a usar este servicio, deberemos instalar los siguientes requisitos:
+```bash
+#Actualiza la paquetería del  sistema
+sudo apt update
+#Instala las dependecias
+sudo apt install vsftpd
+sudo apt install openssh-server
+sudo apt install ftp
+sudo apt install openssl
+sudo apt install git
+sudo apt install openvpn
+```
+Para continuar, deberemos clonar un repositorio de GitHub (Viejo):
+```bash
 git clone https://github.com/OpenVPN/easy-rsa-old
-cp easy-rsa-old 
+```
+Hacemos una copia del repositorio y la guardamos como un backup, permitiendonos vovler a comenzar desde un punto de partida en caso de hacer algo mal.
+```bash
+cp easy-rsa-old  /home/Documents/easy-rsa-old-bk
+```
+A continuación, establecemos la red en estática con ayuda del netplan:
+```bash
+#Accede al fichero de configuración
+sudo nano /etc/netplan/00-network-manager-all.yml
+```
+```bash
+network:
+	version: 2
+	renderer: networkd (por defecto está NetworkManager)
+	ethernets:
+	enp0s3:
+	  dhcp4: no
+	  addresses: [192.168.10.10/24]
+	  gateway4: 192.168.10.1
+	    nameservers:
+	    addresses: [8.8.8.8]
+```
+Aplicamos los cambios de red:
+```bash
+sudo netplan apply
+```
 
-Red Estática:
-nano /etc/netplan/00-network-manager-all.yml	(Los espacios son de 2uds)
-├────network:
-	├──────version: 2
-	├──────renderer: networkd (por defecto está NetworkManager)
-	├──────ethernets:
-	├────────enp0s3:
-├──────────dhcp4: no
-	├──────────addresses: [192.168.10.10/24]
-	├──────────gateway4: 192.168.10.1
-	├──────────nameservers:
-	└────────────addresses: [8.8.8.8]
-
-
-netplan apply
+[!-------------------------------------------------------------------------------------------------------------------!]
+En configuración, actualmente trabajando en estructura y formato de la documentación.
 
 Copia:
 
