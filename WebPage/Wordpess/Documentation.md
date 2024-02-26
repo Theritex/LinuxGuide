@@ -25,7 +25,7 @@ Hay que tener en cuenta nuestra posicion actual dentro del sistema operativo, pu
 ```bash
 #Clonamos el repositorio descomprimido dentro de la ruta raíz con el nombre "wordpress"
 sudo mv wordpress /wordpress
-# - Ubicación actual: /home/user/Downlods
+# - Ubicación actual: /home/user/Downloads
 ```
 Posteriormente a los pasos previos, hay que otorgar permisos a los directorios con los que vamos a trabajar:
 ```bash
