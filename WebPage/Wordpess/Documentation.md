@@ -3,7 +3,7 @@
 
 [ ! ] Recomendación: Para obtener referencias y más apuntes, dirígase a nuestra [Documentación Apache2](https://github.com/Theritex/LinuxGuide/blob/main/WebPage/Apache2/Documentation.md).
 
-Para este ejercicio hay que instalar Ubuntu, en este caso usaremos un `Ubuntu desktop 22.04.06`.
+Para este ejercicio hay que instalar Ubuntu, en este caso usaremos un `Ubuntu desktop 22.04.04s`.
 
 Tras la instalación, actualizamos la máquina con el siguiente comando:
 ```bash
