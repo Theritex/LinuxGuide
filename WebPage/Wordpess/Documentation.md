@@ -61,15 +61,15 @@ sudo nano wordpress.conf
 Agregamos el contenido de la configuración con las rutas necesarias apra su funcionamiento:
 ```bash
 <VirtualHost *:80>
-ServerAdmin webmaster@localhost
-DocumentRoot “/wordpress”
-<Directory “/wordpress”>
-DirectoryIndex index.php
-AllowOverride All
-Require all granted
-</Directory>
-ErrorLog ${APACHE_LOG_DIR}/error.log
-CustomLog ${APACHE_LOG_DIR}/access.log combined
+  ServerAdmin webmaster@localhost
+  DocumentRoot /wordpress
+  <Directory /wordpress>
+  DirectoryIndex index.php
+  AllowOverride All
+  Require all granted
+  </Directory>
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 # - Ubicación actual: /etc/apache2/sites-available/wordpress.conf
 ```
