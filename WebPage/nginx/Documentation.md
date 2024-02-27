@@ -120,7 +120,7 @@ ls -al
 ```
 Posteriormente nos dirigimos a la ruta `/etc/nginx/sites-enabled/mipagina` para editarla y agregar más contenido:
 ```bash
-nano /etc/nginx/sites-enabled/mipagina
+sudo nano /etc/nginx/sites-enabled/mipagina
 ```
 Dentro de esta ruta agregaremos el siguiente contenido:
 ```bash
