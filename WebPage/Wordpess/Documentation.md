@@ -39,8 +39,8 @@ sudo chown www-data:www-data -R *
 Tras otorgar los pemisos necesarios, cambiamos la ruta por defecto de apache2.
 Deshabilitamos el fichero de configuración de apache2:
 ```bash
-#Accedemos a la ruta /sites-aviable
-cd /etc/apache2/sites-aviable
+#Accedemos a la ruta /sites-available
+cd /etc/apache2/sites-available
 #Deshabilitamos la configuración por defecto
 sudo a2dissite 000-default
 # - Ubicación actual: /etc/apache2/sites-available
