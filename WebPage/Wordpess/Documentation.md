@@ -53,7 +53,7 @@ sudo service apache2 restart
 Creamos un nuevo fichero de configuración en la misma ruta previa:
 ```bash
 #Accedemos a la ruta en caso de habernos movido de ubicación
-cd etc/apache2/sites-available/
+cd /etc/apache2/sites-available/
 #Creamos el fichero de configuración y accedemos a su edición
 sudo nano wordpress.conf
 # - Ubicación actual: /etc/apache2/sites-available/
