@@ -112,3 +112,47 @@ ajustar una serie de parámetros básicos de seguridad con el siguiente comando:
 sudo mysql_secure_installation
 ```
 Durante la instalación, realizará varias preguntas, ae stas contestamos que sí, en la última pregunta, `solicitará una contraseña`, esta misma será para `mysql`, guarda esa contraseña en un papel o un documento de forma que no la pierdas.
+
+Tras el proceso comleto es posible que nos pida crear una abse de datos `wp-config.php`, en el interior de esta base de datos hay que agregar la siguiente estructura:
+```php
+<?php
+// ** Database settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'wordpress' );
+
+/** Database username */
+define( 'DB_USER', 'root' );
+
+/** Database password */
+define( 'DB_PASSWORD', 'andres' );
+
+/** Database hostname */
+define( 'DB_HOST', 'localhost' );
+
+/** Database charset to use in creating database tables. */
+define( 'DB_CHARSET', 'utf8mb4' );
+
+/** The database collate type. Don't change this if in doubt. */
+define( 'DB_COLLATE', '' );
+
+define( 'AUTH_KEY',         ']&eKuM6^mw^;,|:[-p?_[XJBkMr<E8&cJGR(.k|1v%bl-Q7szq|ipsgb411e4U}G' );
+define( 'SECURE_AUTH_KEY',  '7|6f^<J>F?4RR%}%k(IY;s)cqY%M4cW*Yp?qXroB[(jf9Zwfzx|r$G{$J3r86qf<' );
+define( 'LOGGED_IN_KEY',    ')xhXtUA|AkftoP@R-dPm|iI{?!i7^T>s~/*(@{,naV#9i kZ1pCK]|(31K5}u*J7' );
+define( 'NONCE_KEY',        '4$pu@PCrf|dBg^4K_Q>Iqaf| 5St~GU,n<#nl`2PghIU G55z/N]lcl%l68kfHd-' );
+define( 'AUTH_SALT',        'MD.SxW+}g`q3Ub}LN>!|,P<+Ya5QFR(vd1H2kE&U(|cl-hGUPq<I${#Ahaxl*H4J' );
+define( 'SECURE_AUTH_SALT', 'E^p{[?C4}/0ZG:}7V)OBakc~cL]M=}X.=:12sq `XM|O+]3](54sZZamq9g&/woy' );
+define( 'LOGGED_IN_SALT',   '4@p34O)[p)X}N KVsWu_l5<oaXRH>U/{XR,?d8;vRyI=,(Z8vNy%}yG$uH8)ht|9' );
+define( 'NONCE_SALT',       'a2u!6q:UrqN96JM,tWy-W==Z&[:!&0pNrbiC{XQ0DdG%! ip^N<F1&M0 Gx|AsE(' );
+
+/**#@-*/
+$table_prefix = 'wp_';
+define( 'WP_DEBUG', false );
+
+/** Absolute path to the WordPress directory. */
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', __DIR__ . '/' );
+}
+
+/** Sets up WordPress vars and included files. */
+require_once ABSPATH . 'wp-settings.php';
+```
