@@ -43,7 +43,7 @@ Deshabilitamos el fichero de configuración de apache2:
 cd /etc/apache2/sites-aviable
 #Deshabilitamos la configuración por defecto
 sudo a2dissite 000-default
-# - Ubicación actual: /etc/apache2/sites-aviable
+# - Ubicación actual: /etc/apache2/sites-available
 ```
 Recargamos el servicio apache para comprobar los cambios:
 ```bash
