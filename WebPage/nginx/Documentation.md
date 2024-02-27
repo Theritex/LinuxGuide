@@ -7,6 +7,8 @@ Instalamos los servicios necesarios para poder continuar:
 sudo apt install nginx
 sudo apt install apache2
 ```
+Posteriormente accederemos al fichero de configuración de red y estableceremos una ip fija en nuestro equipo.
+
 Accedemos a la ruta `/var/www` y creamos un directorio en su interior:
 ```bash
 #Accedemos a la ruta
