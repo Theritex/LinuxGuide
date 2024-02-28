@@ -27,3 +27,5 @@ Squid ha sido desarrollado durante muchos años y se le considera muy completo y
 Asignar  la IP 192.168.0.1/24 en Ubuntu Server y la 192.168.0.10/24 en Ubuntu cliente para situarlos en la misma red, posteriomente comprobaremos que tienen comunicación entre ambas máquinas con el comando ping.
 
 El archivo de configuración es squid.conf situado en el directorio /etc/squid/ resultante de la instalación. La configuración del servicio será pues modificando, eliminando o añadiendo nuevas opciones a este archivo. Por tanto se recomienda que antes de modificar nada en su interior se realice una copia de seguridad para poder restaurarlo a su estado original en caso de ser necesario.
+
+<!--Documentación en proceso, más actualizaciones en un futuro--->
