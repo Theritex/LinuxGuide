@@ -43,25 +43,25 @@ Aplicamos los cambios de red:
 ```bash
 sudo netplan apply
 ```
-
-[!-------------------------------------------------------------------------------------------------------------------!]
-En configuración, actualmente trabajando en estructura y formato de la documentación.
-
-Copia:
-
-
+Tras aplicar la configuración de red, moveremos el repositorio local `2.0` de forma recursiva, excluyendo las capas que lo guardan, renombrándolo como `easy-rsa` dentro de la misma dirección (debería estar situado dentro del escritorio).
+```bash
 cp -r ./easy-rsa-old/easy-rsa/2.0/ easy-rsa
-
-Información:
-build-ca		>>Crear certificado autorizado
-build-dh	>>Diff hellman (encripta todo el trayecto de comunicación)
-build-key-server	>>Crea llaves de certificados de servidor
-build-key	>>Crea llaves de certificado de cliente
-vars		>>Archivo donde se indica ubicación, cliente (por defecto Estados Unidos - San Francisco)
-
-
-Archivo vars:
-nano  vars
+```
+Estos datos te informarán sobre el contenido del repositorio renombrado:
+```
+> build-ca			Crear certificado autorizado
+> build-dh			Diff hellman (encripta todo el trayecto de comunicación)
+> build-key-server	Crea llaves de certificados de servidor
+> build-key			Crea llaves de certificado de cliente
+> vars				Archivo donde se indica ubicación, cliente (por defecto Estados Unidos - San Francisco)
+```
+En el interior del fichero `easy-rsa/vars` agregaremos el siguiente contenido, el cual nos permitirá agregar valores diferentes a cada linea.
+```bash
+#Editamos el fichero vars
+sudo nano  vars
+```
+Contenido en el interior del fichero `var`:
+```bash
 export KEY_COUNTRY=”Country”
 export KEY_PROVINCE=”Province”
 export KEY_CITY=”City”
@@ -73,7 +73,7 @@ export KEY_NAME=key_name
 export KEY_OU=Key_Informativa
 export PKCS11_MODULE_PATH=DNI Electrónico
 export PKCS11_PIN=1234
-
+```
 
 Crear VPN:
 mv openssl.1.0.0.cnf openssl.cnf
