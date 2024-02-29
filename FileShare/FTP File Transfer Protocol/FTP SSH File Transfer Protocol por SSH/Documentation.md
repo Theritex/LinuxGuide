@@ -1,9 +1,20 @@
-Conexión por ssh, es necesario saber usuario y contraseña para poder realizar estas acciones.
-Es posible conectarse tanto a windows como a Linux
-la conexión sh es un protocolo que permite la interacción entre máquinas utilizando una línea de comandos de forma segura
-Puerto 22 de TCP -> IP -> Red
-sshd es el servicio (demonio) que queda esperando peticiones al puerto 22
-SSH = “Secure SHell”
+# Documentación FTP por SSH
+
+## Teoría Previa a la Práctica
+Para establecer una conexión segura a un equipo remoto, se deberá saber las credenciales, siendo estas, usuario y contraseña para su acceso remoto.
+
+Mediante este protocolo, es posible conectarse tanto a sistemas windows como a dispositivos GNU/Linux.
+
+La conexión por ssh es un protocolo que permite la interacción entre máquinas utilizando una línea de comandos de forma segura
+
+`Puerto 22 de TCP -> IP -> Red`
+
+El `servicio sshd` es el demonio (daemon) que queda esperando peticiones al puerto 22, iendo este puerto, el puerto de conexión por defecto de tcp
+
+- SSH = “Secure SHell”
+
+## Práctica FTP - SSH
+
 nano /etc/ssh/sshd_config	>>Fichero de configuración de ssh
 service sshd restart	>>Recargar configuración de sshd (ssh)
 
