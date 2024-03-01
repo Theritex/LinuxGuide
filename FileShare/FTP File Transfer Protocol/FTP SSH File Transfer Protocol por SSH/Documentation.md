@@ -1,5 +1,5 @@
 # Documentación FTP por SSH
-
+<!--Documentación por Nisamov-->
 ## Teoría Previa a la Práctica
 Para establecer una conexión segura a un equipo remoto, se deberá saber las credenciales, siendo estas, usuario y contraseña para su acceso remoto.
 
@@ -13,7 +13,10 @@ El `servicio sshd` es el demonio (daemon) que queda esperando peticiones al puer
 
 - SSH = “Secure SHell”
 
-## Práctica FTP - SSH
+## Comandos a tener en cuenta
+Comandos:
+ssh {nombre-usuario}@{IP} >>Iniciar sesión como usuario
+put archivo.txt >>Enviar archivo.txt
 
 nano /etc/ssh/sshd_config	>>Fichero de configuración de ssh
 service sshd restart	>>Recargar configuración de sshd (ssh)
@@ -21,21 +24,22 @@ service sshd restart	>>Recargar configuración de sshd (ssh)
 ssh [user]@[ip]		>>Conectarse por SSH a un sistema remoto
 └─ sudo apt install openssh-server
 
-nano /etc/vsftpd.conf
-
-write_enable=YES
-listen port=3000
-ftp_data_port=4000
-esto hace que nos conectemos por el puerto 3000 pero enviemos los datos por él 4000 mediante ftp
-
-Comandos:
-ssh {nombre-usuario}@{IP} >>Iniciar sesión como usuario
-put archivo.txt >>Enviar archivo.txt
-
-
 Ejemplo:
 ssh asir@192.168.115.205
 put controller.exe
+
+## Práctica FTP - SSH
+Para comenzar con la práctica, deberemos acceder el fichero de configuración `vsftpd.conf` mediante el siguiente comando:
+```bash
+nano /etc/vsftpd.conf
+```
+Dentro de este fichero escribiremos el siguiente contenido:
+```bash
+write_enable=YES
+listen port=3000
+ftp_data_port=4000
+```
+Esto permite que nos conectemos por el puerto 3000 y enviemos los datos por él 4000 mediante ftp.
 
 
 Envío de archivos:
