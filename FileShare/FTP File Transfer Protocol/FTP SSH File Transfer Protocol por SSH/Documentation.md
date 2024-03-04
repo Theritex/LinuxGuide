@@ -1,5 +1,5 @@
 # Documentación FTP por SSH
-<!--Documentación por Nisamov-->
+<!--Documentado por Andrés Abadías (Nisamov)-->
 ## Teoría Previa a la Práctica
 Para establecer una conexión segura a un equipo remoto, se deberá saber las credenciales, siendo estas, usuario y contraseña para su acceso remoto.
 
@@ -43,8 +43,27 @@ Esto permite que nos conectemos por el puerto 3000 y enviemos los datos por él 
 
 
 Envío de archivos:
-Este comando permite loguearnos como asir
+Este comando permite loguearnos como `usuario`:
+```bash
 scp {/home/dirección/nuestro/archivo.extensión} {usuario}@{IP:/home/ubicación/archivo/destino}
+```
+Siendo así un ejemplo práctico:
+```bash
+#En este ejemplo nos logueamos como user1 enviando nuestor fichero a su directorio /desktop
+scp /home/user/desktop/file.txt user1@192.168.102.111:/home/user1/desktop/
+```
+
+
+
+
+Ejemplo:
+openssl genrsa -aes-256-cbc -out nombre-privada.key 4096 >>Se puede sustituir el tipo de encriptación (-aes-256-cbc) mediante openssl help
+openssl rsa -in nombre-privada.key -pubout > nombre-pública.key
+scp /home/user/nombre-publica.key 192.168.115.205@user:/home/user/
+
+
+openssl rsautl --decrypt -inkey claveprivada.key -in encriptado.enc > desencriptado
+
 
 
 Ejemplo:
