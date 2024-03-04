@@ -10,12 +10,39 @@ Tras la instalación, actualizamos la máquina con el siguiente comando:
 #Actualizamos los paquetes de la maquina
 sudo apt update
 ```
+A continuación upgradeamos la máquina (recomendado):
+```bash
+#Upgradeamos la maquina
+sudo apt upgrade
+```
+
 A continuación, instalamos el siguiente contenido, los cuales son las dependencias y paquetería de los programas que vamos a usar mediante el comando que aparece a continuación:
 ```bash
 #Instalamos los reqisitos de uso
 sudo apt install apache2 php8.1 php8.1-bcmath php8.1-curl php8.1-gd php8.1-mbstring php8.1-mysql php8.1-pgsql php8.1-xml php8.1-zip mariadb-server mariadb-client wget
 ```
-
+De otro modo, también podemos instalar los requisitos mediante los siguientes comandos (instalación por secciones):
+```bash
+sudo apt install apache2
+sudo apt install php7.4
+sudo apt install wget
+sudo apt install mariadb-server
+sudo apt install mariadb-client
+sudo apt install php8.1
+sudo apt install php8.1-mysql
+sudo apt install php8.1-curl
+sudo apt install php8.1-gd
+sudo apt install php8.1-bcmath
+sudo apt install php8.1-cgi
+sudo apt install php8.1-ldap
+sudo apt install php8.1-mbstring
+sudo apt install php8.1-xml
+sudo apt install php8.1-soap
+sudo apt install php8.1-xsl
+sudo apt install php8.1-zip
+#En caso de ser necesario, instalar:
+sudo apt install libapache2-mod-php php-mysql -y
+```
 Este comando nos permitirá instalar todos los paquetes en un solo comando, evitando tener que ir por fragmentos, ahorrandonos tiempo.
 
 Usando el entorno gráfico instalamos wordpress y lo descomprimimos,
