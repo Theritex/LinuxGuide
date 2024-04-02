@@ -51,10 +51,7 @@ Para compartir ficheros, deberemos tener en cuenta nuestra posición actual, si 
 #Enviamos el fichero "fichero.txt"
 put fichero.txt
 ```
-
-
-|---------------------|
-
+---
 ## Lista Comandos uso
 ```bash
 gpg -k                                                      Ver claves
