@@ -76,25 +76,37 @@ export PKCS11_PIN=1234
 ```
 
 Crear VPN:
+```bash
 mv openssl.1.0.0.cnf openssl.cnf
-. ./vars				>>Propiedades de certificado
-./clean-all			>>Borrar certificados creados
-./build-ca			>>Crear certificado “ca.crt” dentro de /keys
-./build-key-server servidor	>>
-./build-dh			>>Crear el dh dentro de /keys
-
+```
+Detalles certificado
+```bash
+. ./vars					>>Propiedades de certificado
+./clean-all					>>Borrar certificados creados
+./build-ca					>>Crear certificado “ca.crt” dentro de /keys
+./build-key-server 			>>Servidor
+./build-dh					>>Crear el dh dentro de /keys
+```
 
 Archivo Configuración VPN:
-
-
+```bash
+# Accedemos a la ruta - ejemplos de configuracion openvpn
 cd /usr/share/doc/openvpn/examples/sample-config-files
+# Copiamos el fichero comprimido del servidor y lo movemos a la siguiente ruta
 cp server.conf.gz /home/user/easy–rsa/keys
+# Dentro de la ruta previa, accedemos al directorio
 cd /home/user/easy-rsa/keys
-gunzip  server.conf.gz	>>Comprimir y transformarlo en un archivo legible
+# Decomprimimos en .gz - Descomrpimir y transformarlo en un archivo legible
+gunzip server.conf.gz
+# Copiamos el fichero por ruta absoluta a la siguiente ruta
 cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /home/user/easy-rsa/keys/
-nano /etc/vsftpd.conf >>Descomentar “write_enable=YES”
+# Accedemos al interior del fichero .conf y descomentamos lo siguiente
+nano /etc/vsftpd.conf
+# En el interior del fichero de configuracion
+#-- Descomentar “write_enable=YES”
+#Guardamos y salimos para finalmente reiniciar el servicio vsftpd
 service vsftpd restart
-
+```
 
 Conexión por FTP
 ftp usuario@ip
@@ -105,28 +117,29 @@ put cliente.key
 put cliente.crt
 put cliente.csr
 
-
-Información server.conf (servidor) - nano /home/user/easy-rsa/keys/server.conf
-ca /home/user/easy-rsa/keys/ca.crt		>>Establecer dirección de los archivos en máquina servidor
-cert /home/user/easy-rsa/keys/servidor.crt	>>Establecer dirección de los archivos en máquina servidor
-key /home/user/easy-rsa/keys/servidor.key	>>Establecer dirección de los archivos en máquina servidor
-
+Rutas e informacion de ficheros de configuracion
+```bash
+# Información server.conf (servidor)
+nano /home/user/easy-rsa/keys/server.conf
+# Establecer dirección de los archivos en máquina servidor
+ca /home/user/easy-rsa/keys/ca.crt
+# Establecer dirección de los archivos en máquina servidor
+cert /home/user/easy-rsa/keys/servidor.crt
+# Establecer dirección de los archivos en máquina servidor
+key /home/user/easy-rsa/keys/servidor.key
+# Almacenamiento de IPs que otorgar a los clientes
 ifconfig-pool-persist /home/user/easy-rsa/keys/ipp.txt
-archivo ipp.txt						>>Archivo donde se almacenan las IPs que se le dan a los clientes
 
 tls-auth ta.key 0						>>Comentar esta linea
 status /home/user/easy-rsa/keys/openvpn-status.log	>>Registro de personas que se loguean
 
 openvpn server.conf						>>Iniciar VPN en el servidor
 
-
 Información client.conf (cliente)
-ca /home/user/ca.crt				>>Establecer dirección de los archivos en máquina cliente
-cert /home/user/cliente.crt			>>Establecer dirección de los archivos en máquina cliente
+ca /home/user/ca.crt					>>Establecer dirección de los archivos en máquina cliente
+cert /home/user/cliente.crt				s>>Establecer dirección de los archivos en máquina cliente
 key /home/user/cliente.key				>>Establecer dirección de los archivos en máquina cliente
 
 tls-auth ta.key 0						>>Comentar esta linea
 openvpn user.conf						>>Iniciar VPN en el cliente
-
-
-
+```
