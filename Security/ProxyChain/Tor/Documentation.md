@@ -5,11 +5,11 @@
 Descripción:
 Proxychains es un software de código abierto para sistemas Linux y viene preinstalado con Kali Linux, la herramienta redirige las conexiones TCP a través de proxies como TOR, SOCKS4, SOCKS5 y HTTP (S) y nos permite encadenar servidores proxy. Con las cadenas de proxy, se puede ocultar la dirección IP del tráfico de origen y evadir IDS y firewalls.
 ```bash
-sudo -i			        >> Acceso como root
-service Tor status		>> Comprobamos si Tor esta instalado siguiendo su estado
-apt-get install tor		>> Instalamos Tor si no está instalado todavía
-service tor start		>> Iniciamos el servicio tor
-service Tor status		>> Comprobamos si Tor está operativo
+sudo -i			            >> Acceso como root
+service Tor status		    >> Comprobamos si Tor esta instalado siguiendo su estado
+apt-get install tor		    >> Instalamos Tor si no está instalado todavía
+service tor start		    >> Iniciamos el servicio tor
+service Tor status		    >> Comprobamos si Tor está operativo
 nano /etc/proxychains.conf	>> Entramos en la configuración de las proxychains
 ```
 ## Configuración:
