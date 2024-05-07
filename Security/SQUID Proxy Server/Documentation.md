@@ -138,4 +138,9 @@ acl Safe_ports port 443
 ```
 
 
-Reincia el servicio para aplicar los cambios (**systemctl reload squid**)
+Reincia el servicio para aplicar los cambios, depende de la distribución usada, el comando para reiniciar el servicio puede variar:
+Distribuciones Debian/Ubuntu:
+`service squid restart`/`service squid3 restart`
+En algunos casos, los servicios se reinician mediante el sitema init, es posible que puedas reiniciarlo mediante este servicio:
+`/etc/init.d/squid restart`
+Si no es viable ninguna opcion semejante, lo más seguro es apagar y volver a encender el equipo.
