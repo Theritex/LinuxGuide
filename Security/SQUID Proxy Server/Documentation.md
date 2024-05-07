@@ -94,6 +94,10 @@ sudo apt install squid
 sudo apt install squidguard
 ```
 
+## Revisión de Conexión
+
+Antes de continuar, es necesario revisar si hay conexión entre los equipos, de lo contrario, no funcionará lo que se haga a continuación.
+
 ## Fichero Configuración Squid:
 
 El archivo de configuración es **squid.conf** situado en el directorio **/etc/squid/** resultante de la
@@ -144,3 +148,57 @@ Distribuciones Debian/Ubuntu:
 En algunos casos, los servicios se reinician mediante el sitema init, es posible que puedas reiniciarlo mediante este servicio:
 `/etc/init.d/squid restart`
 Si no es viable ninguna opcion semejante, lo más seguro es apagar y volver a encender el equipo.
+
+## Configuración del Proxy en Ubuntu Desktop - Sistema Operativo y Navegador
+
+Configurar manualmente el proxy de sistema en Ubuntu Desktop y modificar la configuración del navegador web de forma que se conecte a internet a través de este proxy de sistema.
+Conseguir acceder a dos sitios web de internet desde el navegador web de la máquina cliente.
+
+Para llevar esto a cabo hay que realizar algunos ajustes en el proxy del Ubuntu Desktop, estableciéndolo en `configuración manual` y posteriormente, dentro de los parámetros indicados, hay que agregar lo siguiente:
+```
+ip: 172.30.0.1 (La dirección Ip del Servidor)
+Puerto: 3128
+```
+
+## Autenticación de Conexión por Usuario
+
+A continuación configuraremos el servidor SQUID para habilitar el acceso a internet sólo a tres usuarios definidos por usted. En el nombre de estos usuarios deberá constar las iniciales de uno de los miembros del grupo, por ejemplo en este caso serían: abg1, abg2 y abg3.
+
+Crear tres usuarios:
+Utilizamos el comando **-c** para crear una lista nueva de usuarios
+Usaremos el nombre del usuario como contraseña **(user:abg1 – passwd: abg1)**
+```
+sudo htpasswd -c /etc/squid/passwd abg1
+sudo htpasswd /etc/squid/passwd abg2
+sudo htpasswd /etc/squid/passwd abg3
+```
+Permitir a squid leer el archivo de usuarios:
+```
+sudo chmod 400 /etc/squid/passwd
+sudo chown proxy /etc/squid/passwd
+```
+En el archivo de configuración de SQUID modificar los siguientes comandos:
+```
+auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+auth_param basic children 5
+auth_param basic realm Squid proxy-caching web server
+auth_param basic casesensitive off
+```
+Finalmente modificar el acceso de los usuarios de nuestro proxy para dar sólo permiso y pedir autenticación a los usuarios creados anteriormente.
+Se deben añadir las siguientes líneas al archivo de configuración **squid.conf**:
+```
+acl ncsa_users proxy_auth REQUIRED
+http_access allow ncsa_users
+```
+
+
+## Posibles Preguntas sobre el Programa
+
+**¿Es posible saber si ha habido intentos de acceso no autorizado de algún usuario (credenciales mal
+escritas o erróneas)?:**
+
+Si, mediante los ficheros cache.log(Registro general de avisos y errores, aquí es posible ver
+accesos no autorizados) y access.log(Registro de acceso permitido por parte de dispositivos cliente
+conectados).
+
+La ruta de estos ficheros es: **/var/log/squid/access.log** y **/var/log/squid/cache.log**
