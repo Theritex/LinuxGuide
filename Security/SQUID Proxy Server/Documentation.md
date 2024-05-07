@@ -119,7 +119,7 @@ acl localnet src 10.0.0.0/8
 acl localnet src 100.64.0.0/10
 acl localnet src 169.254.0.0/16
 acl localnet src 172.16.0.0/16
-acl localnet src 172.30.0.0/16
+acl localnet src 172.30.0.0/16            # Red local 172.30.0.0/16
 acl localnet src 192.168.0.0/16
 acl localnet src fc00::/7
 acl localnet src fe80::/10
