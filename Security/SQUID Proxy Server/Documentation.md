@@ -118,10 +118,11 @@ acl localnet src 0.0.0.1-0.255.255.255
 acl localnet src 10.0.0.0/8
 acl localnet src 100.64.0.0/10
 acl localnet src 169.254.0.0/16
-acl localnet src 172.16.0.0/16          # Red local (posiblemente este mal, revisar)_> 172.30.0.0/16
+acl localnet src 172.16.0.0/16
+acl localnet src 172.30.0.0/16
 acl localnet src 192.168.0.0/16
-acl localnet src fc00;;/?               # Revisar "?" y ";;"
-acl localnet src fe80;;/10              # Revisar ";;"
+acl localnet src fc00::/7
+acl localnet src fe80::/10
 
 acl SSL_ports port 443
 acl Safe_ports port 80
