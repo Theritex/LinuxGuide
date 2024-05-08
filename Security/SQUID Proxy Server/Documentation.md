@@ -1,5 +1,7 @@
 # Proxy Server - Squid
-<!--Documentado por Andrés Abadías (Nisamov)-->
+<!--Documentado por Andrés Abadías (Nisamov)
+Documentación con apoyo de Alfredo bercero Gracia-->
+<!--Versión Utilizada: Ubuntu Server 20.04-->
 ## Introduccion:
 
 Squid es uno de los proxy cachés más utilizados hoy en día y tiene como principal función atender a las
