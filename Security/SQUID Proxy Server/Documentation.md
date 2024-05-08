@@ -275,3 +275,34 @@ conectados).
 Las rutas de estos ficheros son: **/var/log/squid/access.log** y **/var/log/squid/cache.log**
 
 ## Definición de Listas de Control de Acceso (ACL)
+
+Las ACL son el mecanismo que determinan un elemento o grupos de elementos.
+Posteriormente estas ACL son utilizadas para determinar el acceso o prohibición a los elementos descritos
+anteriormente en el listado.
+
+**acl dominios_prohibidos dstdomain www.marca.es www.as.com**
+
+En esta ACL se describen dos dominios distintos que queremos que estén prohibidos. Para aplicar
+esta negación de servicio sólo deberemos utilizar esta ACL creada:
+
+**http_access allow localnet !dominios_prohibidos**
+
+En el comando anterior fíjemonos que lo que se hace es dar permiso a toda la red pero no al listado
+de dominios presentes en la ACL llamada dominios_prohibidos.
+
+Podemos definir entonces la sintaxis general de las ACL según sus partes:
+
+**acl name type (string|"filename") [string2] [string3] ["filename2"]**
+
+Las ACL también pueden ser archivos que contengan los elementos a tener presentes. Por ejemplo, y siguiendo con el ejemplo anterior, podemos generar un archivo llamado dominios_prohibidos donde cada línea del archivo sea un dominio diferente.
+
+Este archivo se crea normalmente en **/etc/squid/NOMBRE_DE_ACL**.
+Es decir, debe existir un archivo llamado dominios_prohibidos en /etc/squid que contenga en su interior los dominios a denegar.
+
+Para crear esta ACL sólo deberemos hacerlode la siguiente manera:
+
+**ACL dominios_prohibidos dstdomain “/etc/squid/dominios_prohibidos”**
+
+Debe tenerse en cuenta que las ACL dependiendo del tipo de filtrado que se desea utilizar y su futura utilización.
+Es importanyr recordar que con escribir la línea de la ACL no es suficiente, hay que aplicarla posteriormente con
+una línia de acceso http **(http_access)**.
