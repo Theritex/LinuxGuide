@@ -160,6 +160,78 @@ ip: 172.30.0.1 (La dirección Ip del Servidor)
 Puerto: 3128
 ```
 
+## Lectura Manual de los Accesos a Internet a trvés del Proxy
+
+Para este proceso, es necesario conocer las rutas de los ficheros de acceso **/var/log/squid/access.log**
+
+Dentro de la ruta: **/var/log/squid/**
+Para mostrar las ultimas 50 lineas, se ha usado el comando: **sudo tail -n 50 access.log**
+Para mostrar todo el contenido pudiendo subir o bajar: **sudo less access.log**
+
+## Instalación y Configuración de SARG
+
+Para continuar con el proceso, instalaremos SARG, este nos permitirá ver y previsualizar las direcciones a las que accede el cliente, de una manera más comoda.
+
+Instalación de SARG:
+```
+sudo apt update
+sudo apt install sarg
+```
+Ruta de SARG: **/etc/sarg/sarg.conf**
+
+## Cambios en el fichero sarg.conf
+
+IDIOMA: si aparece esta opción, según la versión utilizada, se recomienda establecer el Español **‘Spanish’**.
+
+Ubicación de los archivos de SQUID access.log: revisar que la ruta es correcta.
+
+Utilización de gráficas: para utilizar información visual se aconseja aplicar **graphs yes** y **graph_days_bytes_bar_color “ESCRIBIR-UN-COLOR-EN-INGLÉS”** para habilitar la visualización de las gráficas, cambiar el color naranja definido como predeterminado por otro color a su elección.
+
+Directorio de salida de los informes: Se recomienda revisar la ruta donde se almacenarán los informes.
+
+Es muy interesante visitar esta ruta para saber cómo SARG organiza la información.
+
+Para elegir que los informes se guarden sin límites compruebe que la opción lastlog esté a 0.
+
+Formato de fecha: elegir la opción e para establecer el formato europeo (dd/mm/yy).
+
+Información de SARG: habilitar la opción para ver la información que SARG extrae de los logs de SQUID.
+Para ello habilitar la opción **show_sarg_info** a **yes**.
+
+## Ejecución Manual de Informes
+
+Una vez tenemos SARG configurado, sólo queda que genere informes de acceso de los datos
+guardados en los logs de squid. Para ello ejecutar el comando:
+**sudo sarg** (o bien) **sudo sarg-reports today**
+
+[Troubleshooting]: Es posible que ejecutando el comando se devuelva un error respecto a la
+resolución de IPs; si es así, leerlo y arreglar el problema en el archivo de configuración para que ya
+no salga este aviso cuando ejecutemos el SARG.
+
+Con este comando generará un informe con todos los datos almacenados en los logs de squid.
+También se puede realizar otros tipos de informes más detallados: por días, por franja de fechas,
+por una hora específica, por un usuario específico (éste último no es aplicable en este punto de la
+práctica), por un dominio destino específico, etc...
+
+## Primer Acceso a la Información de SARG
+
+Para poder visualizar los informes generados por SARG sólo deberemos acceder desde un cliente y
+su navegador **http://IP_DEL_SERVIDOR/sarg**, en este caso sería **http://172.30.0.1/sarg**.
+
+[Troubleshooting]: Si no es accesible se deberá generar un enlace simbólico del directorio donde se
+almacenan las páginas web de nuestro servidor en el directorio de salida de los informes del SARG
+con el comando:
+**sudo ln –sv /var/lib/sarg/ /var/www/html**
+
+Una vez que hemos conseguido acceder, ver qué información proporciona esta herramienta una
+vez instalada y configurada.
+
+Para establecer conexión en el dispositivo servidor, es necesario configurar el proxy en el equipo
+cliente de la siguiente forma:
+- Poxy por configuración Manual
+- Proxy por HTTPS: `172.30.0.1` por el puerto `3128`
+Todos los puertos se reenvían al puerto `3128`
+
 ## Autenticación de Conexión por Usuario
 
 A continuación configuraremos el servidor SQUID para habilitar el acceso a internet sólo a tres usuarios definidos por usted. En el nombre de estos usuarios deberá constar las iniciales de uno de los miembros del grupo, por ejemplo en este caso serían: abg1, abg2 y abg3.
@@ -191,7 +263,6 @@ acl ncsa_users proxy_auth REQUIRED
 http_access allow ncsa_users
 ```
 
-
 ## Posibles Preguntas sobre el Programa
 
 **¿Es posible saber si ha habido intentos de acceso no autorizado de algún usuario (credenciales mal
@@ -201,4 +272,6 @@ Si, mediante los ficheros cache.log(Registro general de avisos y errores, aquí 
 accesos no autorizados) y access.log(Registro de acceso permitido por parte de dispositivos cliente
 conectados).
 
-La ruta de estos ficheros es: **/var/log/squid/access.log** y **/var/log/squid/cache.log**
+Las rutas de estos ficheros son: **/var/log/squid/access.log** y **/var/log/squid/cache.log**
+
+## Definición de Listas de Control de Acceso (ACL)
