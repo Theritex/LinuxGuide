@@ -108,13 +108,13 @@ La ruta completa es: **/etc/squid/squid.conf**
 
 ## Configuración del Proxy en Ubuntu Server:
 
-Descomentar los parámetros explicados en el apartado «2. Configuración del Servidor
-como Proxy-cache», asegurándose de que tienen el valor indicado.
+Descomentar los parámetros **Proxy-cache»**, asegurándose de que tienen el valor indicado.
+Estos parámetros, han sido explicados previamente, es importante revisar la infromación para llevar a cabo la práctica sin problemas.
 
 Permitir que cualquier ordenador de nuestra red interna tenga acceso a internet. Si existen
 otras redes preconfiguradas para poder acceder a internet, eliminar su permiso.
 
-El proxy sólo debe permitir acceder al puerto http (80) y al https (443), pero no al ftp (21).
+El proxy sólo debe permitir acceder al puerto **http (80)** y al **https (443)**, pero **no** al **ftp (21)**.
 Si existen otros puertos preconfigurados para poder acceder a internet, eliminar su permiso.
 (Comentar los puertos no indicados), dejando el siguiente resultado:
 ```conf
@@ -141,7 +141,6 @@ acl Safe_ports port 443
 #acl Safe_ports port 777
 ```
 
-
 Reincia el servicio para aplicar los cambios, depende de la distribución usada, el comando para reiniciar el servicio puede variar:
 Distribuciones Debian/Ubuntu:
 `service squid restart`/`service squid3 restart`
@@ -155,6 +154,8 @@ Configurar manualmente el proxy de sistema en Ubuntu Desktop y modificar la conf
 Conseguir acceder a dos sitios web de internet desde el navegador web de la máquina cliente.
 
 Para llevar esto a cabo hay que realizar algunos ajustes en el proxy del Ubuntu Desktop, estableciéndolo en `configuración manual` y posteriormente, dentro de los parámetros indicados, hay que agregar lo siguiente:
+
+Esta información es presentada más adelante nuevamente.
 ```
 ip: 172.30.0.1 (La dirección Ip del Servidor)
 Puerto: 3128
@@ -193,7 +194,7 @@ Es muy interesante visitar esta ruta para saber cómo SARG organiza la informaci
 
 Para elegir que los informes se guarden sin límites compruebe que la opción lastlog esté a 0.
 
-Formato de fecha: elegir la opción e para establecer el formato europeo (dd/mm/yy).
+Formato de fecha: elegir la opción e para establecer el formato europeo **(dd/mm/yy)**.
 
 Información de SARG: habilitar la opción para ver la información que SARG extrae de los logs de SQUID.
 Para ello habilitar la opción **show_sarg_info** a **yes**.
@@ -268,8 +269,8 @@ http_access allow ncsa_users
 **¿Es posible saber si ha habido intentos de acceso no autorizado de algún usuario (credenciales mal
 escritas o erróneas)?:**
 
-Si, mediante los ficheros cache.log(Registro general de avisos y errores, aquí es posible ver
-accesos no autorizados) y access.log(Registro de acceso permitido por parte de dispositivos cliente
+Si, mediante los ficheros **cache.log**(Registro general de avisos y errores, aquí es posible ver
+accesos no autorizados) y **access.log**(Registro de acceso permitido por parte de dispositivos cliente
 conectados).
 
 Las rutas de estos ficheros son: **/var/log/squid/access.log** y **/var/log/squid/cache.log**
@@ -288,7 +289,7 @@ esta negación de servicio sólo deberemos utilizar esta ACL creada:
 **http_access allow localnet !dominios_prohibidos**
 
 En el comando anterior fíjemonos que lo que se hace es dar permiso a toda la red pero no al listado
-de dominios presentes en la ACL llamada dominios_prohibidos.
+de dominios presentes en la ACL llamada **dominios_prohibidos**.
 
 Podemos definir entonces la sintaxis general de las ACL según sus partes:
 
@@ -297,7 +298,7 @@ Podemos definir entonces la sintaxis general de las ACL según sus partes:
 Las ACL también pueden ser archivos que contengan los elementos a tener presentes. Por ejemplo, y siguiendo con el ejemplo anterior, podemos generar un archivo llamado dominios_prohibidos donde cada línea del archivo sea un dominio diferente.
 
 Este archivo se crea normalmente en **/etc/squid/NOMBRE_DE_ACL**.
-Es decir, debe existir un archivo llamado dominios_prohibidos en /etc/squid que contenga en su interior los dominios a denegar.
+Es decir, debe existir un archivo llamado dominios_prohibidos en **/etc/squid** que contenga en su interior los dominios a denegar.
 
 Para crear esta ACL sólo deberemos hacerlode la siguiente manera:
 
