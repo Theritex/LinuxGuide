@@ -6,5 +6,4 @@ Se recomienda usar [LinuxCommands](https://github.com/Theritex/LinuxCommands) co
 > [ ! ] El repositorio está ordenado de forma sistemática.
 
 ## Colaboración
-- [Nisamov](https://github.com/Nisamov) - Dueño y principal colaborador del repositorio.
-- [hncamob](https://github.com/hncamob) - Cuenta secundaria del dueño, colaboración simple.
+- [Nisamov](https://github.com/Nisamov) - Representante de la empresa Theritex y principal colaborador del repositorio.
