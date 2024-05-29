@@ -339,4 +339,4 @@ Finalmente hay que reiniciar el servicio apache2 una última vez:
 sudo service apache2 restart
 ```
 
-Si se ha seguido el procedimiento indicado, la página debería ser funcional, durante la aplicación de cambios y los reinicios de apache2 peuden surgir errores, los cuales son detallados durante la misma ejecución.
+Si se ha seguido el procedimiento indicado, la página debería ser funcional, durante la aplicación de cambios y los reinicios de apache2 pueden surgir errores, los cuales son detallados durante la misma ejecución.
