@@ -42,9 +42,11 @@ El fichero de configuración a modificar es: `isc-dhcp-server`, en la ruta absol
 Hay que añadirle la siguiente línea: `INTERFACESv4="enp0s3"` (sustituyendo la interfaz por la salida a la que daremos IP a otros equipos).
 
 Nos dirigimos al fichero de configuración mediante el siguiente comando:
-`nano /etc/dhcp/dhcpd.conf`
+`sudo nano /etc/dhcp/dhcpd.conf`
 Y descomentamos la siguiente línea:
 `authoritative;`
+Servidor Autoritativo (authoritative): Al habilitar esta opción, le estás diciendo al servidor DHCP que es el servidor DHCP principal de la red.
+Cuando un servidor DHCP se configura como autoritativo, responderá rápidamente a cualquier solicitud de clientes DHCP (como solicitudes de dirección IP) y puede también enviar respuestas cuando detecte que otro servidor DHCP está enviando configuraciones erróneas o contradictorias.
 
 ## Configuración de Rangos de IP
 
