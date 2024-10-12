@@ -29,7 +29,7 @@ Obtendrás un error, pues no has configurado el servicio correctamente.
 Comprueba el syslog del sistema con `tail -10 /var/log/syslog` justo despues de haber reiniciado el servicio.
 Si la información que aparece no es útil, ejecuta `journalctl -n 50` para mostrar las __últimas 50 lineas del log__ y averiguar qué ha pasado.
 
-Tras le ejecución de estos comandos, podremos observas errores o advertencias en el servicio, los cuales nos indicarán errores en el código, información sobre el consumo de CPU, la salida del código, siendo un ejemplo:
+Tras le ejecución de estos comandos, podremos observar errores o advertencias en el servicio, los cuales nos indicarán errores en el código, información sobre el consumo de CPU, la salida del código, siendo un ejemplo:
 `code=exited, status=1/FAILURE - failed with result ‘exit-code’`
 
 ## Configuración del servicio DHCP - Tarjetas de Red
