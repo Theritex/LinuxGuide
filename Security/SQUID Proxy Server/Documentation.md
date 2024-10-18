@@ -1,5 +1,5 @@
 # Proxy Server - Squid
-<!--Documentado por Andrés Abadías (Nisamov)
+<!--Documentado por Andrés Ruslan Abadías Otal (Nisamov)
 Documentación con apoyo de Alfredo bercero Gracia-->
 <!--Versión Utilizada: Ubuntu Server 20.04-->
 ## Introduccion:

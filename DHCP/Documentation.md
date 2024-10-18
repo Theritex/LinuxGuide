@@ -1,5 +1,6 @@
 # Configuracion DHCP Ubuntu Server
-<!--Documentado por Andrés Abadías (Nisamov)-->
+<!--Documentado por Andrés Ruslan Abadías Otal (Nisamov)-->
+
 La máquina que contendrá el servidor de DHCP será Ubuntu Server.
 Esta será la encargada de realizar las concesiones de las diferentes IP's.
 

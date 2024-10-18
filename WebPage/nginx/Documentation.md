@@ -1,5 +1,7 @@
 # Documentación NGINX
-<!--Documentado por Andrés Abadías (Nisamov)-->
+<!--Documentado por Andrés Ruslan Abadías Otal (Nisamov)-->
+> Documentado por Andrés Ruslan Abadías Otal | [Nisamov](https://github.com/Nisamov)
+
 [ ! ] Recomendación: Se recomienda revisar el contenido de la [Documentación de apache2](https://github.com/Theritex/LinuxGuide/blob/main/WebPage/Apache2/Documentation.md), pues contiene información que puede ser útil a la hora de llevar a cabo este servicio.
 
 Instalamos los servicios necesarios para poder continuar:

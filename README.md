@@ -7,3 +7,4 @@ Se recomienda usar [LinuxCommands](https://github.com/Theritex/LinuxCommands) co
 
 ## Colaboración
 - [Nisamov](https://github.com/Nisamov) - Representante de la empresa Theritex y principal colaborador del repositorio.
+- Alfredo bercero Gracia - Colaborador

@@ -1,5 +1,6 @@
-# Documentación Worpress
-<!--Documentado por Andrés Abadías (Nisamov)-->
+# Documentación Wordpress
+<!--Documentado por Andrés Ruslan Abadías Otal (Nisamov)-->
+> Documentado por Andrés Ruslan Abadías Otal | [Nisamov](https://github.com/Nisamov)
 
 [ ! ] Recomendación: Para obtener referencias y más apuntes, dirígase a nuestra [Documentación Apache2](https://github.com/Theritex/LinuxGuide/blob/main/WebPage/Apache2/Documentation.md).
 

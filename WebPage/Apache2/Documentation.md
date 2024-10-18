@@ -1,6 +1,14 @@
 # Documentación Apache2
-<!--Documentado por Andrés Abadías (Nisamov)-->
+<!--Documentado por Andrés Ruslan Abadías Otal (Nisamov)-->
+> Documentado por Andrés Ruslan Abadías Otal | [Nisamov](https://github.com/Nisamov)
+
 ## Instalación
+Para evitar posibles problemas durante la instalación, se recomienda actualizar los paquetes del sistema.
+```sh
+# Esto es unicamente opcional
+sudo apt update && sudo apt upgrade -y
+```
+
 Instalación de apache2:
 Instalamos el servicio con los privilegios de administrador.
 ```bash
@@ -298,17 +306,17 @@ Tras la creacion del certificado y la llave solicitará el ingreso de datos, sie
 Estas llaves y certificados son necesarios dentro de la configuración previa "/etc/apache2/sites-available/mipagina.es.conf", haciendo referencia a estos mismos, los cuales usará para la conexión HTTPs.
 
 Como últimos pasos hay que reiniciar el servicio apache2:
-```bash
+```sh
 sudo service apache2 restart
 ```
 
 Tras esto, si se intenta acceder a la pagina, nos mostrará un aviso "Advertencia: Riesgo potencial de seguridad a continuación", para evitar un aviso similar, accederemos al a configuración de neustra página:
-```bash
+```sh
 sudo nano /etc/apache2/sites-available/mipagina.es.conf
 ```
 En esta ubicación agregaremos la siguiente linea:
 `Redirect permanent / http://www.mipagina.es`, redirigiendo todas los accesos http,  a una conexión segura mediante https:
-```bash
+```sh
 <VirtualHost *:80>
 ServerAdmin webmaster@localhost
 DocumentRoot /var/www/mipagina.es

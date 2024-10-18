@@ -1,5 +1,6 @@
 # Documentación FTP
-<!--Documentado por Andrés Abadías (Nisamov)-->
+<!--Documentado por Andrés Ruslan Abadías Otal (Nisamov)-->
+
 ## Teoría Previa a la Práctica
 Contamos con dos tipos de encriptación, siendo estos los siguientes:
 - Encriptación simétrica

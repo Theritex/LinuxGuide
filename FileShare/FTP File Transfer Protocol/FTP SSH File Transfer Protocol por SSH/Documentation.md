@@ -1,5 +1,6 @@
 # Documentación FTP por SSH
-<!--Documentado por Andrés Abadías (Nisamov)-->
+<!--Documentado por Andrés Ruslan Abadías Otal (Nisamov)-->
+
 ## Teoría Previa a la Práctica
 Para establecer una conexión segura a un equipo remoto, se deberá saber las credenciales, siendo estas, usuario y contraseña para su acceso remoto.
 
