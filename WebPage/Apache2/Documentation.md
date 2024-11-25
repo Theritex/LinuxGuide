@@ -229,7 +229,7 @@ sudo a2ensite mipagina.es
 # - Ubicación actual: /etc/apache2/sites-available
 ```
 
-Tras seguir todos los pasos previos, hayq eu asignar una direccion a la pagina, para ello editaremos el fichero `/etc/hosts`:
+Tras seguir todos los pasos previos, hay que asignar una direccion a la pagina, para ello editaremos el fichero `/etc/hosts`:
 
 ```bash
 #Editamos el fichero /etc/hosts
