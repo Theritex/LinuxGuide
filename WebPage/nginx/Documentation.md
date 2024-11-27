@@ -50,7 +50,7 @@ sudo cp default mipagina
 sudo nano mipagina
 ```
 Dentro del fichero previo, agregarmeos el siguiente contenido:
-```bash
+```yml
 server {
 listen 80;
 root /var/www/mipagina.es;
@@ -127,7 +127,7 @@ Posteriormente nos dirigimos a la ruta `/etc/nginx/sites-enabled/mipagina` para 
 sudo nano /etc/nginx/sites-enabled/mipagina
 ```
 Dentro de esta ruta agregaremos el siguiente contenido:
-```bash
+```yml
 server {
 listen 80;
 root /var/www/mipagina.es;
