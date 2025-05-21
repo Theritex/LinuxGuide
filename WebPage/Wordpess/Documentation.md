@@ -184,4 +184,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
 ```
-Tras llevar a cabo todas las configuraciones necesarias, procederemos a la isntalación completa de la pagina dentro del navegador y seguiremos procediendo hasta completar todo el servicio.
+Tras llevar a cabo todas las configuraciones necesarias, procederemos a la instalación completa de la pagina dentro del navegador y seguiremos procediendo hasta completar todo el servicio.

@@ -1,5 +1,6 @@
 # Documentación FTP
-<!--Documentado por Andrés Ruslan Abadías Otal (Nisamov)-->
+<!--Documentado por Andrés Abadías (Nisamov)-->
+> Documentado por Andrés Ruslan Abadías Otal | [Nisamov](https://github.com/Nisamov)
 
 ## Teoría Previa a la Práctica
 Contamos con dos tipos de encriptación, siendo estos los siguientes:

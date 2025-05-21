@@ -1,5 +1,6 @@
 # FileShare - NFS+SAMBA
-<!--Documentado por Andrés Ruslan Abadías Otal (Nisamov)-->
+<!--Documentado por Andrés Abadías (Nisamov)-->
+> Documentado por Andrés Ruslan Abadías Otal | [Nisamov](https://github.com/Nisamov)
 
 ## Documentación SAMBA
 ### Instalación
@@ -69,7 +70,7 @@ Ese ejemplo permite mostrar de una manera sencilla la siguiente estructura a la 
 ```
 ### Reinicio de servicios
 Reiniciamos y analizamos los servicios:
-```bash
+```sh
 #Reiniciamos el servicio nmbd
 service nmbd restart
 #Reiniciamos el servicio smbd
@@ -78,14 +79,14 @@ service smbd restart
 service nmbd status
 ```
 Si es requerido agregar un usuario al cual otorgarle los permisos de acceso, usaremos el siguiente comando:
-```bash
+```sh
 sudo adduser usuario
 ```
 
 ## Documentación NFS
 ### Instalación
 Instalamos los paquetes necesarios para su correcto funcionamiento:
-```bash
+```sh
 #Paquete necesario para el cliente
 sudo apt install nfs-common
 #Paquete necesario para los servidores
@@ -93,23 +94,23 @@ sudo apt install nfs-kernel-server
 ```
 ### Edición fichero configuración NFS
 Abrimos y editamos el fichero de configuración al cual otorgarle permisos:
-```bash
+```sh
 #Abrimos y editamos el fichero /etc/exports
 sudo nano /etc/exports
 ```
 Dentro de este fichero habrá que tener en cuenta una estructura la cual segur para poder asignar tantos directorios como es requerido:
 Estructura base:
-```bash
+```sh
 direccion/carpeta/en/servidor direccion.ip.servidor(permiso1,permiso2,permiso3)
 ```
 Tras ver la estructura base, puedes identificar la estructua a agregar dentro de `/etc/exports`:
-```bash
+```sh
 /home/user/carpeta1 40.0.0.0/8(rw,sync,subtree_check,no_root_squash)
 /home/user/carpeta2 40.0.0.0/8(rw,sync,subtree_check,no_root_squash)
 /home/user/carpeta3 *(ro,sync,subtree_check,root_squash)
 ```
 Para poder configurar la linea previa, es necesario conocer los permisos disponibles:
-```bash
+```sh
 rw			        Lectura y escritura
 ro                  Solo lectura
 nfs-kernel-server   restart
@@ -124,11 +125,11 @@ no_wdelay		    Desactiva la opción predeterminada wdelay
 ```
 ### Instalación de dependencias
 Dentro de la maquina cliente es necesario instalar `rpcbind`, debido a que es una dependencia de nfs-kernel-server:
-```bash
+```sh
 sudo apt install rpcbind
 ```
 ### Montaje de directorios
-Tras rpcbin en la maquina cliente, montamos el directorio dentro de la ruta que se quiera, mientras usamos la maquina cliente:
-```bash
+Tras la einstalación de `rpcbind` en la maquina cliente, montamos el directorio dentro de la ruta que se quiera, mientras usamos la maquina cliente:
+```sh
 sudo mount IP:/nombreCarpeta /rutaLocalEnLaQueMontarla
 ```

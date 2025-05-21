@@ -1,5 +1,6 @@
 # Documentación FTP por SSH
-<!--Documentado por Andrés Ruslan Abadías Otal (Nisamov)-->
+<!--Documentado por Andrés Abadías (Nisamov)-->
+> Documentado por Andrés Ruslan Abadías Otal | [Nisamov](https://github.com/Nisamov)
 
 ## Teoría Previa a la Práctica
 Para establecer una conexión segura a un equipo remoto, se deberá saber las credenciales, siendo estas, usuario y contraseña para su acceso remoto.
@@ -10,7 +11,7 @@ La conexión por ssh es un protocolo que permite la interacción entre máquinas
 `Puerto 22 de TCP -> IP -> Red`
 
 El `servicio sshd` es el demonio (daemon) que queda esperando peticiones al puerto 22, iendo este puerto, el puerto de conexión por defecto de tcp
-- SSH = “Secure SHell”
+- SSH = “Secure Shell”
 
 ## Comandos a tener en cuenta
 ### Comandos:

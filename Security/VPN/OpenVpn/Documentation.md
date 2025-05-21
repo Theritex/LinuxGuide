@@ -1,5 +1,7 @@
 # Documentación OpenVPN
 <!--Documentado por Andrés Abadías (Nisamov)-->
+> Documentado por Andrés Ruslan Abadías Otal | [Nisamov](https://github.com/Nisamov)
+
 Una VPN crea una camino virtual a través de internet para conectarse sin una conexión directa a una red.
 
 Para poder comenzar a usar este servicio, deberemos instalar los siguientes requisitos:

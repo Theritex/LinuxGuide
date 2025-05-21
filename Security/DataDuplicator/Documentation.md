@@ -1,5 +1,6 @@
 # DataDuplicator :: dd
-<!--Documentado por Andrés Ruslan Abadías Otal (Nisamov)-->
+<!--Documentado por Andrés Abadías (Nisamov)-->
+> Documentado por Andrés Ruslan Abadías Otal | [Nisamov](https://github.com/Nisamov)
 
 ## Descripción:
 El comando dd es una herramienta de línea de comandos utilizada en sistemas operativos tipo Unix y Linux para realizar copias exactas de datos de un archivo, dispositivo o partición a otro archivo, dispositivo o partición. Puede ser utilizado para copiar y convertir datos de diferentes formas.

@@ -1,5 +1,6 @@
 # Proxy Chains - Tor
-<!--Documentado por Andrés Ruslan Abadías Otal (Nisamov)-->
+<!--Documentado por Andrés Abadías (Nisamov)-->
+> Documentado por Andrés Ruslan Abadías Otal | [Nisamov](https://github.com/Nisamov)
 
 ## Requisitos: Instalación de Tor Browser
 
